@@ -1,0 +1,5 @@
+{
+  "staticPath": "public",
+  "userDepsFilePath": "cosmos/cosmos.userdeps.js",
+  "experimentalRendererUrl": "http://localhost:3000/_cosmos.html"
+}
