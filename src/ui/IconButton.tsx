@@ -13,3 +13,7 @@ export const IconButton = styled.button`
     background-color: var(--theme-hover-active);
   }
 `;
+
+IconButton.defaultProps = {
+  type: 'button',
+};

@@ -11,5 +11,19 @@ export default defineConfig({
       '~': path.join(__dirname, 'src'),
     },
   },
-  plugins: [react(), svgr()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          [
+            '@emotion',
+            {
+              autoLabel: 'never',
+            },
+          ],
+        ],
+      },
+    }),
+    svgr(),
+  ],
 });
