@@ -50,6 +50,10 @@ const styles = css`
     text-decoration: none;
     display: inline-flex;
   }
+
+  body.ModalBodyOpen {
+    overflow: hidden;
+  }
 `;
 
 export function GlobalStyles() {

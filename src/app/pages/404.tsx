@@ -1,3 +1,1 @@
-export default function Page404() {
-  return <>404</>;
-}
+export { NotFoundView as default } from '../views/NotFoundView';

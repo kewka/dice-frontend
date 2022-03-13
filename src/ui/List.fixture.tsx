@@ -12,7 +12,7 @@ export default {
         <HelpIcon />
         <ListItemText>Single-line</ListItemText>
       </ListItem>
-      <ListItem>
+      <ListItem className="active">
         <GithubIcon />
         <ListItemText>GitHub</ListItemText>
       </ListItem>

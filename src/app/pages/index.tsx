@@ -1,3 +1,1 @@
-export default function IndexPage() {
-  return <>Hello world</>;
-}
+export { PlayView as default } from '../dice/views/PlayView';

@@ -33,14 +33,9 @@ export const themeCss = css`
     --theme-success: ${green[700]};
     --theme-success-contrast: ${white};
 
-    /* 
-  
-  
-  --theme-modal-overlay: rgba($color-black, 0.6),
-  --theme-modal-background: $color-white,
-  --theme-modal-z-index: 1000,
-  
-  */
+    --theme-modal-overlay: ${rgba(black, 0.6)};
+    --theme-modal-background: ${white};
+    --theme-modal-z-index: 1000;
   }
 `;
 
