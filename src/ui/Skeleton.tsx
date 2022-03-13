@@ -16,7 +16,7 @@ export function Skeleton({
   return <Root style={{ width, height, ...style }} {...rest} />;
 }
 
-const pulse = keyframes`
+const opacityPulse = keyframes`
   0% {
     opacity: 1;
   }
@@ -33,6 +33,6 @@ const pulse = keyframes`
 export const Root = styled.div`
   border-radius: 4px;
   background: var(--theme-skeleton-color);
-  animation: ${pulse} 2s infinite ease-in-out;
+  animation: ${opacityPulse} 2s infinite ease-in-out;
   max-width: 100%;
 `;

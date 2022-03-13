@@ -6,6 +6,7 @@ import { GlobalStyles } from '~/ui/GlobalStyles';
 import { Layout } from './components/Layout';
 import { PageLoader } from './components/PageLoader';
 import { Provider } from './providers';
+import { Paths } from './router/paths';
 
 const Pages = {
   Index: lazy(() => import('./pages/index')),
@@ -21,7 +22,7 @@ export function App() {
           <Layout>
             <Suspense fallback={<PageLoader />}>
               <Routes>
-                <Route path="/" element={<Pages.Index />} />
+                <Route path={Paths.INDEX} element={<Pages.Index />} />
                 <Route path="*" element={<Pages.NotFound />} />
               </Routes>
             </Suspense>

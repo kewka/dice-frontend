@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 
-import { AnyProps } from '~/shared/types/AnyProps';
+import { AnyProps } from '~/types/AnyProps';
 
 import { hover } from './mixins/hover';
 

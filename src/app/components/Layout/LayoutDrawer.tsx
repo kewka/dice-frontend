@@ -20,10 +20,11 @@ import { useAuth } from '~/app/auth/provider';
 import { Alert } from '~/ui/Alert';
 import { Avatar } from '~/ui/Avatar';
 import { useAccountBalance } from '~/app/web3/cache';
-import { formatAddress, formatCurrency } from '~/shared/utils/format';
+import { formatAddress, formatCurrency } from '~/app/utils/format';
 import { currency } from '~/app/web3/config';
 import { Typography } from '~/ui/Typography';
 import { Skeleton } from '~/ui/Skeleton';
+import { Paths } from '~/app/router/paths';
 
 export type LayoutDrawerProps = ComponentProps<typeof Drawer>;
 
@@ -39,15 +40,15 @@ export function LayoutDrawer(props: LayoutDrawerProps) {
       </StyledList>
       <StyledDivider />
       <StyledList as="nav">
-        <ListItem as={NavLink} to="/">
+        <ListItem as={NavLink} to={Paths.INDEX}>
           <PlayIcon />
           <ListItemText>{t('Play')}</ListItemText>
         </ListItem>
-        <ListItem as={NavLink} to="/faq">
+        <ListItem as={NavLink} to={Paths.FAQ}>
           <HelpIcon />
           <ListItemText>{t('FAQ')}</ListItemText>
         </ListItem>
-        <ListItem as="a" href="https://github.com/kewka">
+        <ListItem as="a" href="https://github.com/kewka/dice-app">
           <GithubIcon />
           <ListItemText>{t('GitHub')}</ListItemText>
         </ListItem>
@@ -71,8 +72,8 @@ export const StyledDivider = styled(Divider)`
 `;
 
 export function GuestActions() {
-  const { connect, error } = useAuth();
   const { t } = useTranslation();
+  const { connect, error } = useAuth();
   return (
     <>
       <ListItem onClick={connect} component="button" type="button">

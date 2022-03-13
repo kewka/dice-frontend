@@ -3,6 +3,8 @@ import { NetworkConnector } from '@web3-react/network-connector';
 
 import { getLibrary } from './utils';
 
+export { default as MULTICALL_ABI } from '../abis/Multicall.json';
+
 export enum ChainId {
   Mainnet = 56,
   Testnet = 97,

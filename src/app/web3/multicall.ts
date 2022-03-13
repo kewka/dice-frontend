@@ -1,8 +1,6 @@
 import { ethers } from 'ethers';
 
-import MulticallAbi from '~/shared/abis/Multicall.json';
-
-import { MULTICALL_ADDRESS, networkLibrary } from './config';
+import { MULTICALL_ADDRESS, MULTICALL_ABI, networkLibrary } from './config';
 
 export type MulticallCall = {
   address: string;
@@ -15,7 +13,7 @@ export async function multicall<T = any>(
   calls: MulticallCall[],
   provider: ethers.providers.Provider = networkLibrary
 ): Promise<T[]> {
-  const multi = new ethers.Contract(MULTICALL_ADDRESS, MulticallAbi, provider);
+  const multi = new ethers.Contract(MULTICALL_ADDRESS, MULTICALL_ABI, provider);
   const itf = new ethers.utils.Interface(abi);
   const calldata = calls.map((call) => ({
     target: call.address,

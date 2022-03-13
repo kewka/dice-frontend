@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { CSSProperties } from 'react';
 
-import { AnyProps } from '~/shared/types/AnyProps';
+import { AnyProps } from '~/types/AnyProps';
 
 import { typography } from './mixins/typography';
 import { cx } from './utils';

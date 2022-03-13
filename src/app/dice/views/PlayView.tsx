@@ -7,9 +7,11 @@ import { Button } from '~/ui/Button';
 import { PageHeader } from '~/ui/PageHeader';
 import { ReactComponent as AddIcon } from '~/ui/svg/AddIcon.svg';
 
+import { CreateGameModal } from '../components/CreateGameModal';
+
 export function PlayView() {
   const { t } = useTranslation();
-  const [isOpen, setOpen] = useState(false);
+  const [isCreate, setCreate] = useState(false);
   const { account } = useAuth();
   return (
     <>
@@ -17,11 +19,15 @@ export function PlayView() {
         title={t('Play')}
         description={t('On this page you can create a new game or join one.')}
         actions={
-          <Button disabled={!account} onClick={() => setOpen(true)}>
+          <Button disabled={!account} onClick={() => setCreate(true)}>
             <AddIcon />
             {t('Create Game')}
           </Button>
         }
+      />
+      <CreateGameModal
+        isOpen={isCreate}
+        onRequestClose={() => setCreate(false)}
       />
     </>
   );

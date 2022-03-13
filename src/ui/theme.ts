@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { rgba } from 'polished';
 
 import { black, blue, gray, green, orange, red, white } from './vars/colors';
+import * as zIndex from './vars/zIndex';
 
 export const themeCss = css`
   body {
@@ -35,7 +36,7 @@ export const themeCss = css`
 
     --theme-modal-overlay: ${rgba(black, 0.6)};
     --theme-modal-background: ${white};
-    --theme-modal-z-index: 1000;
+    --theme-modal-z-index: ${zIndex.modal};
   }
 `;
 
