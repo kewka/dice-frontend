@@ -13,7 +13,7 @@ export function FormField({ label, error, children, ...rest }: FormFieldProps) {
     <Root {...rest}>
       <LabelText>{label}</LabelText>
       {children}
-      {error && <ErrorMessage variant="caption">{error}</ErrorMessage>}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Root>
   );
 }
@@ -26,10 +26,13 @@ export const Root = styled.label`
 export const LabelText = styled(Typography)``;
 
 LabelText.defaultProps = {
-  variant: 'caption',
+  $variant: 'caption',
 };
 
 export const ErrorMessage = styled(Typography)`
   color: var(--theme-error);
-  opacity: 1;
 `;
+
+ErrorMessage.defaultProps = {
+  $variant: 'caption',
+};

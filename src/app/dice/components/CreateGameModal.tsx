@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { formatEther, parseEther } from 'ethers/lib/utils';
 import styled from '@emotion/styled';
-import { useState } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
 import { Modal, ModalProps } from '~/ui/Modal';
@@ -11,9 +10,9 @@ import { Button } from '~/ui/Button';
 import { FormField } from '~/ui/FormField';
 import { Input } from '~/ui/Input';
 import { getErrorMessage } from '~/app/utils/errors';
-import { Alert } from '~/ui/Alert';
 import { Paths } from '~/app/router/paths';
 import { useAccountBalance } from '~/app/web3/cache';
+import { useNotifications } from '~/app/notifications/provider';
 
 import {
   useCreateGame,
@@ -41,7 +40,7 @@ export function CreateGameModal(props: CreateGameModalProps) {
   const { data: maxPlayers } = useMaxPlayers();
   const { data: minBet } = useMinBet();
 
-  const [error, setError] = useState('');
+  const { notify } = useNotifications();
 
   const { mutateAsync: createGame } = useCreateGame();
   const { refetch: refetchBalance } = useAccountBalance({
@@ -56,7 +55,6 @@ export function CreateGameModal(props: CreateGameModalProps) {
     },
     onSubmit: async (values, { setErrors }) => {
       try {
-        setError('');
         const created = await createGame({
           amount: parseEther(values.amount),
           playerCount: values.playerCount,
@@ -70,7 +68,10 @@ export function CreateGameModal(props: CreateGameModalProps) {
           case ErrInvalidPlayerCount:
             return setErrors({ playerCount: err.message });
           default:
-            return setError(getErrorMessage(err));
+            return notify({
+              severity: 'error',
+              content: getErrorMessage(err),
+            });
         }
       }
     },
@@ -85,7 +86,6 @@ export function CreateGameModal(props: CreateGameModalProps) {
     <Modal title={t('Create Game')} {...props}>
       {isLoaded ? (
         <form onSubmit={formik.handleSubmit}>
-          {error && <Alert severity="error">{error}</Alert>}
           <Fields>
             <BalanceField
               label={t('Bet Amount')}

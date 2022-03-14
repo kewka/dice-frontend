@@ -9,11 +9,8 @@ import { ReactComponent as AlertCircleIcon } from './svg/AlertCircleIcon.svg';
 import { ReactComponent as WarningIcon } from './svg/WarningIcon.svg';
 import { ReactComponent as InfoCircleIcon } from './svg/InfoCircleIcon.svg';
 import { ReactComponent as CheckCircleIcon } from './svg/CheckCircleIcon.svg';
-import { cx } from './utils';
 
-export const severities = ['error', 'warning', 'info', 'success'] as const;
-
-export type AlertSeverity = typeof severities[number];
+export type AlertSeverity = 'error' | 'warning' | 'info' | 'success';
 
 const icons: Record<AlertSeverity, ReactNode> = {
   error: <AlertCircleIcon />,
@@ -23,20 +20,13 @@ const icons: Record<AlertSeverity, ReactNode> = {
 };
 
 export type AlertProps = ComponentProps<typeof Root> & {
-  severity: AlertSeverity;
   onClose?: () => any;
 };
 
-export function Alert({
-  className,
-  severity,
-  children,
-  onClose,
-  ...rest
-}: AlertProps) {
+export function Alert({ className, children, onClose, ...rest }: AlertProps) {
   return (
-    <Root className={cx(className, `severity-${severity}`)} {...rest}>
-      {icons[severity]}
+    <Root {...rest}>
+      {icons[rest.$severity]}
       <Message>{children}</Message>
       {onClose && (
         <IconButton onClick={onClose}>
@@ -47,19 +37,15 @@ export function Alert({
   );
 }
 
-export const Root = styled.div`
+export const Root = styled.div<{ $severity: AlertSeverity }>`
   display: flex;
   align-items: center;
   padding: 8px 16px;
 
-  ${severities.map(
-    (severity) => css`
-      &.severity-${severity} {
-        background-color: var(--theme-${severity});
-        color: var(--theme-${severity}-contrast);
-      }
-    `
-  )}
+  ${(props) => css`
+    background-color: var(--theme-${props.$severity});
+    color: var(--theme-${props.$severity}-contrast);
+  `}
 `;
 
 export const Message = styled(Typography)`
@@ -69,5 +55,5 @@ export const Message = styled(Typography)`
 `;
 
 Message.defaultProps = {
-  variant: 'body2',
+  $variant: 'body2',
 };

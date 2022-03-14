@@ -5,9 +5,12 @@ import { multicall, MulticallCall } from '../web3/multicall';
 
 import { DICE_ABI } from './config';
 
-// Errors
+// Contract errors
 export const ErrBetAmountTooLow = new Error('Bet amount is too low');
 export const ErrInvalidPlayerCount = new Error('Invalid Player Count');
+
+// Custom errors
+export const ErrTransactionFailed = new Error('Transaction failed');
 
 // Structs
 export type Game = {
@@ -57,6 +60,9 @@ export async function createGame(
       value: amount,
     });
     const receipt = await tx.wait();
+    if (receipt.status === 0) {
+      throw ErrTransactionFailed;
+    }
     return { id: receipt.events![0].args!.id };
   } catch (err) {
     throw transformRpcError(err, [ErrBetAmountTooLow, ErrInvalidPlayerCount]);
@@ -125,10 +131,17 @@ export async function fetchGame(
 
 export async function joinGame(contract: ethers.Contract, game: Game) {
   try {
-    const tx: ethers.ContractTransaction = await contract.join(game.id, {
+    const gasLimit = await contract.estimateGas.join(game.id, {
       value: game.bet,
     });
-    await tx.wait();
+    const tx: ethers.ContractTransaction = await contract.join(game.id, {
+      value: game.bet,
+      gasLimit: gasLimit.mul(150).div(100),
+    });
+    const receipt = await tx.wait();
+    if (receipt.status === 0) {
+      throw ErrTransactionFailed;
+    }
   } catch (err) {
     throw transformRpcError(err, []);
   }

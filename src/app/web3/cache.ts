@@ -2,16 +2,16 @@ import { useQuery, UseQueryOptions } from 'react-query';
 
 import { useWeb3 } from './hooks';
 
-export function useBalance(address?: string | null, options?: UseQueryOptions) {
+export function useBalance(address?: string | null, opts?: UseQueryOptions) {
   const { library } = useWeb3();
   return useQuery(['balance', address], () => library!.getBalance(address!), {
-    enabled: Boolean(address && library),
-    refetchInterval: 3000,
-    ...(options as any),
+    enabled: !!address,
+    refreshInterval: 3000,
+    ...(opts as any),
   });
 }
 
-export function useAccountBalance(options?: UseQueryOptions) {
+export function useAccountBalance(opts?: UseQueryOptions) {
   const { account } = useWeb3();
-  return useBalance(account, options);
+  return useBalance(account, opts);
 }

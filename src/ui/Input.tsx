@@ -1,8 +1,8 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ComponentProps, ReactNode } from 'react';
 
 import { typography } from './mixins/typography';
-import { cx } from './utils';
 
 export type InputProps = ComponentProps<'input'> & {
   error?: boolean;
@@ -12,7 +12,7 @@ export type InputProps = ComponentProps<'input'> & {
 
 export function Input({ error, start, end, className, ...rest }: InputProps) {
   return (
-    <Root className={cx(className, error && 'error')}>
+    <Root className={className} $error={error}>
       {start && <Slot>{start}</Slot>}
       <input type="text" {...rest} />
       {end && <Slot>{end}</Slot>}
@@ -20,16 +20,18 @@ export function Input({ error, start, end, className, ...rest }: InputProps) {
   );
 }
 
-export const Root = styled.div`
+export const Root = styled.div<{ $error?: boolean }>`
   height: 36px;
   border: 1px solid var(--theme-divider);
   border-radius: 4px;
   display: flex;
   transition: all 200ms ease-in-out;
 
-  &.error {
-    border-color: var(--theme-error);
-  }
+  ${(props) =>
+    props.$error &&
+    css`
+      border-color: var(--theme-error);
+    `}
 
   input {
     ${typography('body2')}

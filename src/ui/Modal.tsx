@@ -25,7 +25,7 @@ export function Modal({
   return (
     <Root closeTimeoutMS={closeTimeoutMS} appElement={appElement} {...rest}>
       <Header>
-        <Typography variant="h6">{title}</Typography>
+        <Typography $variant="h6">{title}</Typography>
         <IconButton onClick={rest.onRequestClose}>
           <CloseIcon />
         </IconButton>

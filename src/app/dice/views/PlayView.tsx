@@ -8,6 +8,7 @@ import { PageHeader } from '~/ui/PageHeader';
 import { ReactComponent as AddIcon } from '~/ui/svg/AddIcon.svg';
 
 import { CreateGameModal } from '../components/CreateGameModal';
+import { GamesList } from '../components/GamesList';
 
 export function PlayView() {
   const { t } = useTranslation();
@@ -29,6 +30,7 @@ export function PlayView() {
         isOpen={isCreate}
         onRequestClose={() => setCreate(false)}
       />
+      <GamesList />
     </>
   );
 }

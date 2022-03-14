@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { useMedia, useToggle } from 'react-use';
@@ -5,12 +6,12 @@ import { useMedia, useToggle } from 'react-use';
 import { Container } from '~/ui/Container';
 import { down } from '~/ui/mq';
 import { Toolbar } from '~/ui/Toolbar';
-import { cx } from '~/ui/utils';
 import { lg } from '~/ui/vars/breakpoints';
 import { width as drawerWidth } from '~/ui/vars/drawer';
 import { height as toolbarHeight } from '~/ui/vars/toolbar';
 
 import { LayoutDrawer } from './LayoutDrawer';
+import { LayoutNotifications } from './LayoutNotifications';
 
 export type LayoutProps = {
   children?: ReactNode;
@@ -21,8 +22,9 @@ export function Layout({ children }: LayoutProps) {
   const isDownLg = useMedia(down(lg));
   return (
     <>
+      <LayoutNotifications />
       <StyledLayoutDrawer />
-      <Main className={cx(isOpen && 'open')}>
+      <Main $isOpen={isOpen}>
         <Container>{children}</Container>
       </Main>
       {isDownLg && <StyledToolbar onMenu={toggleOpen} />}
@@ -30,7 +32,7 @@ export function Layout({ children }: LayoutProps) {
   );
 }
 
-export const Main = styled.main`
+export const Main = styled.main<{ $isOpen: boolean }>`
   margin-left: ${drawerWidth}px;
   background: var(--theme-background);
   min-height: 100vh;
@@ -48,9 +50,11 @@ export const Main = styled.main`
     margin-top: ${toolbarHeight}px;
     min-height: calc(100vh - ${toolbarHeight}px);
 
-    &.open {
-      margin-left: ${drawerWidth}px;
-    }
+    ${(props) =>
+      props.$isOpen &&
+      css`
+        margin-left: ${drawerWidth}px;
+      `}
   }
 `;
 

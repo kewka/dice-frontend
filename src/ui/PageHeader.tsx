@@ -20,10 +20,10 @@ export function PageHeader({
   return (
     <Root {...rest}>
       <Texts>
-        <Typography as="h3" variant="h3">
+        <Typography as="h3" $variant="h3">
           {title}
         </Typography>
-        <Typography variant="caption">{description}</Typography>
+        <Typography $variant="caption">{description}</Typography>
       </Texts>
       <Actions>{actions}</Actions>
     </Root>

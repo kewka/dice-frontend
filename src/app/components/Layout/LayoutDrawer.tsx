@@ -80,7 +80,7 @@ export function GuestActions() {
         <LoginIcon />
         <ListItemText>{t('Connect')}</ListItemText>
       </ListItem>
-      {error && <Alert severity="warning">{error.message}</Alert>}
+      {error && <Alert $severity="warning">{error.message}</Alert>}
     </>
   );
 }
@@ -97,7 +97,7 @@ function AccountActions() {
         <ListItemText>
           <Typography>{formatAddress(account!)}</Typography>
           {balance ? (
-            <Typography variant="caption">
+            <Typography $variant="caption">
               {t('Balance: {{balance}}', {
                 balance: formatCurrency(balance, currency.symbol),
               })}

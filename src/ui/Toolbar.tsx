@@ -18,7 +18,7 @@ export function Toolbar({ onMenu, ...rest }: ToolbarProps) {
           <MenuIcon />
         </IconButton>
       )}
-      <Logo width="100%" height="100%" />
+      <Logo height="100%" />
     </Root>
   );
 }

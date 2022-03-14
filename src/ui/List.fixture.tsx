@@ -24,14 +24,14 @@ export default {
         <HelpIcon />
         <ListItemText>
           <Typography>First line</Typography>
-          <Typography variant="caption">Second line</Typography>
+          <Typography $variant="caption">Second line</Typography>
         </ListItemText>
       </ListItem>
       <ListItem>
         <GithubIcon />
         <ListItemText>
           <Typography>GitHub</Typography>
-          <Typography variant="caption">@kewka</Typography>
+          <Typography $variant="caption">@kewka</Typography>
         </ListItemText>
       </ListItem>
     </List>
@@ -46,7 +46,7 @@ export default {
         <GithubIcon />
         <ListItemText>
           <Typography>GitHub</Typography>
-          <Typography variant="caption">@kewka</Typography>
+          <Typography $variant="caption">@kewka</Typography>
         </ListItemText>
       </ListItem>
     </List>
@@ -61,7 +61,7 @@ export default {
         <Avatar src="https://picsum.photos/300" />
         <ListItemText>
           <Typography>Nikita Korshunov</Typography>
-          <Typography variant="caption">Status: 👋</Typography>
+          <Typography $variant="caption">Status: 👋</Typography>
         </ListItemText>
       </ListItem>
     </List>

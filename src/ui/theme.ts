@@ -37,6 +37,8 @@ export const themeCss = css`
     --theme-modal-overlay: ${rgba(black, 0.6)};
     --theme-modal-background: ${white};
     --theme-modal-z-index: ${zIndex.modal};
+
+    --theme-notifications-z-index: ${zIndex.notifications};
   }
 `;
 
