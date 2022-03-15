@@ -6,7 +6,7 @@ export function useBalance(address?: string | null, opts?: UseQueryOptions) {
   const { library } = useWeb3();
   return useQuery(['balance', address], () => library!.getBalance(address!), {
     enabled: !!address,
-    refreshInterval: 3000,
+    refetchInterval: 3000,
     ...(opts as any),
   });
 }

@@ -6,6 +6,7 @@ import { generatePath, NavLink } from 'react-router-dom';
 import { useAuth } from '~/app/auth/provider';
 import { useNotifications } from '~/app/notifications/provider';
 import { Paths } from '~/app/router/paths';
+import { useAccountBalance } from '~/app/web3/cache';
 import { TextLink } from '~/ui/TextLink';
 
 import {
@@ -27,6 +28,7 @@ export function GamesSubscription() {
   const { refetch: refetchGameId } = useGameId({
     enabled: false,
   });
+  const { refetch: refetchBalance } = useAccountBalance();
 
   useEffect(
     () => onGameCreated(contract, (event) => refetchGameId()),
@@ -46,6 +48,7 @@ export function GamesSubscription() {
       onGameFinished(contract, async (event) => {
         const game = (await fetchGame(contract, event.id))!;
         updateGame(queryClient, game);
+        refetchBalance();
 
         if (account && isPlayer(game.players, account)) {
           notify({
@@ -67,7 +70,7 @@ export function GamesSubscription() {
           });
         }
       }),
-    [account, contract, notify, queryClient, t]
+    [account, contract, notify, queryClient, refetchBalance, t]
   );
 
   return null;
