@@ -12,7 +12,7 @@ export function BottomActions() {
       <IconButton
         as="a"
         title={t('GitHub')}
-        href="https://github.com/kewka/dice-app"
+        href="https://github.com/kewka/dice-frontend"
       >
         <GithubIcon />
       </IconButton>
