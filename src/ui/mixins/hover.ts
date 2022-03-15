@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 export const hover = css`
-  transition: background-color var(--theme-hover-duration) ease-in-out;
+  transition: background-color var(--theme-transition-2) ease-in-out;
 
   &:disabled {
     cursor: not-allowed;
@@ -9,10 +9,10 @@ export const hover = css`
   }
 
   &:not(:disabled):hover {
-    background-color: var(--theme-hover);
+    background-color: var(--theme-color-hover);
   }
 
   &:not(:disabled):active {
-    background-color: var(--theme-hover-active);
+    background-color: var(--theme-color-hover-active);
   }
 `;

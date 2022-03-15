@@ -6,7 +6,6 @@ import { AnyProps } from '~/types/AnyProps';
 
 import { typography } from './mixins/typography';
 import { cx } from './utils';
-import { white } from './vars/colors';
 
 export type ButtonProps = AnyProps<typeof Root> & {
   style?: CSSProperties & {
@@ -58,20 +57,14 @@ export const Root = styled.button`
   }
 
   /* Colors */
-  ${['primary', 'error', 'warning', 'info', 'success'].map(
+  ${['primary', 'error', 'warning', 'info', 'success', 'caption'].map(
     (color) => css`
       &.color-${color} {
-        --button-color: var(--theme-${color});
-        --button-color-contrast: var(--theme-${color}-contrast);
+        --button-color: var(--theme-color-${color});
+        --button-color-contrast: var(--theme-color-${color}-contrast);
       }
     `
   )}
-
-  &.color-caption {
-    --button-color: var(--theme-text);
-    --button-color-contrast: var(--theme-background);
-    opacity: 0.6;
-  }
 
   /* Variants */
   &.variant-contained {
@@ -88,7 +81,7 @@ export const Root = styled.button`
     --button-border-width: 1px;
     border: var(--button-border-width) solid var(--button-color);
     color: var(--button-color);
-    transition: background 150ms ease-in-out;
+    transition: background var(--theme-transition-2) ease-in-out;
 
     &:hover {
       background: var(--button-color);
@@ -116,9 +109,9 @@ export const Root = styled.button`
     width: 100%;
     height: 100%;
     pointer-events: none;
-    background: var(--button-ripple-color, ${white});
+    background: var(--button-ripple-color, var(--theme-color-white));
     opacity: 0;
-    transition: opacity 150ms ease-in;
+    transition: opacity var(--theme-transition-2) ease-in;
   }
 
   &:hover ${Ripple} {

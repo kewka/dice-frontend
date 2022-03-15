@@ -91,11 +91,11 @@ export function PayoutText({ payout, bet }: PayoutTextProps) {
 export const PayoutTextRoot = styled(Typography)<{
   $isNegativeProfit?: boolean;
 }>`
-  color: var(--theme-success);
+  color: var(--theme-color-success);
 
   ${(props) =>
     props.$isNegativeProfit &&
     css`
-      color: var(--theme-error);
+      color: var(--theme-color-error);
     `}
 `;

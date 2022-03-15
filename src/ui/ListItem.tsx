@@ -20,7 +20,7 @@ export const ListItem = styled.li<AnyProps<'li'>>`
   }
 
   &.active {
-    color: var(--theme-primary);
+    color: var(--theme-color-primary);
   }
 
   button&,

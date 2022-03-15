@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { useMedia, useToggle } from 'react-use';
@@ -6,9 +5,8 @@ import { useMedia, useToggle } from 'react-use';
 import { Container } from '~/ui/Container';
 import { down } from '~/ui/mq';
 import { Toolbar } from '~/ui/Toolbar';
+import { cx } from '~/ui/utils';
 import { lg } from '~/ui/vars/breakpoints';
-import { width as drawerWidth } from '~/ui/vars/drawer';
-import { height as toolbarHeight } from '~/ui/vars/toolbar';
 
 import { LayoutDrawer } from './LayoutDrawer';
 import { LayoutNotifications } from './LayoutNotifications';
@@ -23,21 +21,20 @@ export function Layout({ children }: LayoutProps) {
   return (
     <>
       <LayoutNotifications />
-      <StyledLayoutDrawer />
-      <Main $isOpen={isOpen}>
+      <Main>
         <Container>{children}</Container>
+        {isOpen && isDownLg && <Overlay onClick={toggleOpen} />}
       </Main>
+      <StyledLayoutDrawer className={cx(isOpen && 'open')} />
       {isDownLg && <StyledToolbar onMenu={toggleOpen} />}
     </>
   );
 }
 
-export const Main = styled.main<{ $isOpen: boolean }>`
-  margin-left: ${drawerWidth}px;
-  background: var(--theme-background);
+export const Main = styled.main`
+  margin-left: var(--theme-drawer-width);
   min-height: 100vh;
   position: relative;
-  transition: all 0.2s ease-in-out;
 
   & > ${Container} {
     padding-top: 24px;
@@ -47,14 +44,8 @@ export const Main = styled.main<{ $isOpen: boolean }>`
   @media ${down(lg)} {
     width: 100%;
     margin-left: 0;
-    margin-top: ${toolbarHeight}px;
-    min-height: calc(100vh - ${toolbarHeight}px);
-
-    ${(props) =>
-      props.$isOpen &&
-      css`
-        margin-left: ${drawerWidth}px;
-      `}
+    margin-top: var(--theme-toolbar-height);
+    min-height: calc(100vh - var(--theme-toolbar-height));
   }
 `;
 
@@ -65,13 +56,29 @@ export const StyledToolbar = styled(Toolbar)`
   right: 0;
 `;
 
+export const Overlay = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--theme-color-overlay);
+`;
+
 export const StyledLayoutDrawer = styled(LayoutDrawer)`
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
+  overflow-y: auto;
+  transition: left var(--theme-transition-3) ease-in-out;
 
   @media ${down(lg)} {
-    top: ${toolbarHeight}px;
+    top: var(--theme-toolbar-height);
+    left: calc(var(--theme-drawer-width) * -1);
+
+    &.open {
+      left: 0;
+    }
   }
 `;

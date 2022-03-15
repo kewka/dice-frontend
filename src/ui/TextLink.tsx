@@ -5,7 +5,7 @@ import { AnyProps } from '~/types/AnyProps';
 import { Typography } from './Typography';
 
 export const TextLink = styled(Typography)<AnyProps<'a'>>`
-  color: var(--theme-primary);
+  color: var(--theme-color-primary);
   text-decoration: underline;
 `;
 

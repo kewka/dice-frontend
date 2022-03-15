@@ -108,12 +108,12 @@ export function StatusCell({ results }: StatusCellProps) {
 }
 
 export const StatusCellRoot = styled(Typography)<{ $finished?: boolean }>`
-  color: var(--theme-info);
+  color: var(--theme-color-info);
 
   ${(props) =>
     props.$finished &&
     css`
-      color: var(--theme-success);
+      color: var(--theme-color-success);
     `}
 `;
 

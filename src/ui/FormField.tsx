@@ -30,7 +30,7 @@ LabelText.defaultProps = {
 };
 
 export const ErrorMessage = styled(Typography)`
-  color: var(--theme-error);
+  color: var(--theme-color-error);
 `;
 
 ErrorMessage.defaultProps = {

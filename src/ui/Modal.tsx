@@ -49,7 +49,7 @@ export const Root = styled(({ className, ...rest }: ReactModal.Props) => {
   );
 })`
   .ModalContent {
-    background-color: var(--theme-modal-background);
+    background-color: var(--theme-color-background);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -62,13 +62,13 @@ export const Root = styled(({ className, ...rest }: ReactModal.Props) => {
   }
 
   .ModalOverlay {
-    background-color: var(--theme-modal-overlay);
+    background-color: var(--theme-color-overlay);
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
-    z-index: var(--theme-modal-z-index);
+    z-index: var(--theme-z-index-modal);
     transition: opacity ${closeTimeoutMS}ms ease-in-out;
     opacity: 0;
 

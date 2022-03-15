@@ -24,8 +24,8 @@ const styles = css`
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: var(--theme-background);
-    color: var(--theme-text);
+    background: var(--theme-color-background);
+    color: var(--theme-color-text);
     overflow-x: hidden;
     ${typography('body1')}
   }

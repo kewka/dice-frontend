@@ -6,7 +6,6 @@ import { useNotifications } from '~/app/notifications/provider';
 import { Alert } from '~/ui/Alert';
 import { down } from '~/ui/mq';
 import { lg } from '~/ui/vars/breakpoints';
-import { height as toolbarHeight } from '~/ui/vars/toolbar';
 
 export type LayoutNotificationsProps = ComponentProps<typeof Root>;
 
@@ -45,7 +44,7 @@ export const Root = styled.div`
   position: fixed;
   right: 16px;
   top: 16px;
-  z-index: var(--theme-notifications-z-index);
+  z-index: var(--theme-z-index-notifications);
 
   display: grid;
   gap: 8px;
@@ -57,6 +56,6 @@ export const Root = styled.div`
   }
 
   @media ${down(lg)} {
-    top: ${toolbarHeight + 16}px;
+    top: calc(var(--theme-toolbar-height) + 16px);
   }
 `;

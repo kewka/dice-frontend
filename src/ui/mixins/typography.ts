@@ -31,7 +31,7 @@ export const variants = {
     line-height: ${rem(14)};
     font-weight: 400;
     letter-spacing: ${rem(0.5)};
-    opacity: 0.6;
+    color: var(--theme-color-caption);
   `,
   button: css`
     font-size: ${rem(14)};

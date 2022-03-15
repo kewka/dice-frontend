@@ -1,7 +1,14 @@
 import { Button } from './Button';
 import { ReactComponent as LoginIcon } from './svg/LoginIcon.svg';
 
-const colors = ['primary', 'error', 'warning', 'info', 'success'] as const;
+const colors = [
+  'primary',
+  'error',
+  'warning',
+  'info',
+  'success',
+  'caption',
+] as const;
 const variants = ['contained', 'text', 'outlined'] as const;
 
 export default {

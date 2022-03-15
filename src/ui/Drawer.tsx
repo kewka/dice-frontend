@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
 
-import { width } from './vars/drawer';
-
 export const Drawer = styled.aside`
   padding: 16px 8px;
-  width: ${width}px;
-  background: var(--theme-background);
-  border-right: 1px solid var(--theme-divider);
+  width: var(--theme-drawer-width);
+  background: var(--theme-color-background);
+  box-shadow: 1px 0 1px var(--theme-drawer-shadow);
 `;

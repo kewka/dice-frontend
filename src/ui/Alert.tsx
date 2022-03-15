@@ -43,8 +43,8 @@ export const Root = styled.div<{ $severity: AlertSeverity }>`
   padding: 8px 16px;
 
   ${(props) => css`
-    background-color: var(--theme-${props.$severity});
-    color: var(--theme-${props.$severity}-contrast);
+    background-color: var(--theme-color-${props.$severity});
+    color: var(--theme-color-${props.$severity}-contrast);
   `}
 `;
 

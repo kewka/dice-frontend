@@ -22,15 +22,14 @@ export function Input({ error, start, end, className, ...rest }: InputProps) {
 
 export const Root = styled.div<{ $error?: boolean }>`
   height: 36px;
-  border: 1px solid var(--theme-divider);
+  border: 1px solid var(--theme-color-divider);
   border-radius: 4px;
   display: flex;
-  transition: all 200ms ease-in-out;
 
   ${(props) =>
     props.$error &&
     css`
-      border-color: var(--theme-error);
+      border-color: var(--theme-color-error);
     `}
 
   input {
@@ -39,7 +38,7 @@ export const Root = styled.div<{ $error?: boolean }>`
     padding: 0 8px;
     background: none;
     border: none;
-    color: var(--theme-text);
+    color: var(--theme-color-text);
     outline: none;
   }
 `;
