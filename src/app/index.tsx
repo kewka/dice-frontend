@@ -13,6 +13,7 @@ const Pages = {
   Index: lazy(() => import('./pages/index')),
   NotFound: lazy(() => import('./pages/404')),
   Game: lazy(() => import('./pages/games/[id]')),
+  Faq: lazy(() => import('./pages/faq')),
 };
 
 export function App() {
@@ -27,6 +28,7 @@ export function App() {
               <Routes>
                 <Route path={Paths.INDEX} element={<Pages.Index />} />
                 <Route path={Paths.GAME} element={<Pages.Game />} />
+                <Route path={Paths.FAQ} element={<Pages.Faq />} />
                 <Route path="*" element={<Pages.NotFound />} />
               </Routes>
             </Suspense>
