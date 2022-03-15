@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ReactNode } from 'react';
+import { MouseEvent, ReactNode, useCallback } from 'react';
 import { useMedia, useToggle } from 'react-use';
 
 import { Container } from '~/ui/Container';
@@ -18,6 +18,18 @@ export type LayoutProps = {
 export function Layout({ children }: LayoutProps) {
   const [isOpen, toggleOpen] = useToggle(false);
   const isDownLg = useMedia(down(lg));
+  const onDrawerClick = useCallback(
+    (event: MouseEvent) => {
+      if (
+        isOpen &&
+        isDownLg &&
+        (event.target as HTMLElement).closest('[data-close]')
+      ) {
+        toggleOpen(false);
+      }
+    },
+    [isDownLg, isOpen, toggleOpen]
+  );
   return (
     <>
       <LayoutNotifications />
@@ -25,7 +37,10 @@ export function Layout({ children }: LayoutProps) {
         <Container>{children}</Container>
         {isOpen && isDownLg && <Overlay onClick={toggleOpen} />}
       </Main>
-      <StyledLayoutDrawer className={cx(isOpen && 'open')} />
+      <StyledLayoutDrawer
+        onClick={onDrawerClick}
+        className={cx(isOpen && 'open')}
+      />
       {isDownLg && <StyledToolbar onMenu={toggleOpen} />}
     </>
   );
@@ -71,14 +86,14 @@ export const StyledLayoutDrawer = styled(LayoutDrawer)`
   top: 0;
   bottom: 0;
   overflow-y: auto;
-  transition: left var(--theme-transition-3) ease-in-out;
+  transition: transform var(--theme-transition-3) ease-in-out;
 
   @media ${down(lg)} {
     top: var(--theme-toolbar-height);
-    left: calc(var(--theme-drawer-width) * -1);
+    transform: translateX(calc(var(--theme-drawer-width) * -1));
 
     &.open {
-      left: 0;
+      transform: none;
     }
   }
 `;

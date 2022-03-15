@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
 import { useAuth } from '~/app/auth/provider';
 import { formatAddress, formatCurrency } from '~/app/utils/format';
@@ -19,7 +18,7 @@ export function AccountActions() {
 
   return (
     <>
-      <ListItem as={NavLink} to="#">
+      <ListItem>
         <Avatar />
         <ListItemText>
           <Typography>{formatAddress(account!)}</Typography>

@@ -9,7 +9,6 @@ export function BottomActions() {
   const { t } = useTranslation();
   return (
     <Root>
-      <ToggleThemeButton title={t('Toggle theme')} />
       <IconButton
         as="a"
         title={t('GitHub')}
@@ -17,6 +16,7 @@ export function BottomActions() {
       >
         <GithubIcon />
       </IconButton>
+      <ToggleThemeButton title={t('Toggle theme')} />
       {/* TODO: i18n picker */}
       {/* TODO: chainId selector */}
     </Root>

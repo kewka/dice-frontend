@@ -10,7 +10,7 @@ export function GuestActions() {
   const { connect, error } = useAuth();
   return (
     <>
-      <ListItem onClick={connect} component="button" type="button">
+      <ListItem onClick={connect} as="button" type="button">
         <LoginIcon />
         <ListItemText>{t('Connect')}</ListItemText>
       </ListItem>

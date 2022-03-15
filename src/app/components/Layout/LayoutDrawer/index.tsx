@@ -34,11 +34,11 @@ export function LayoutDrawer(props: LayoutDrawerProps) {
       </StyledList>
       <StyledDivider />
       <StyledList as="nav">
-        <ListItem as={NavLink} to={Paths.INDEX}>
+        <ListItem data-close as={NavLink} to={Paths.INDEX}>
           <PlayIcon />
           <ListItemText>{t('Play')}</ListItemText>
         </ListItem>
-        <ListItem as={NavLink} to={Paths.FAQ}>
+        <ListItem data-close as={NavLink} to={Paths.FAQ}>
           <HelpIcon />
           <ListItemText>{t('FAQ')}</ListItemText>
         </ListItem>
