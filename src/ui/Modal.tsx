@@ -14,14 +14,7 @@ export type ModalProps = ComponentProps<typeof Root> & {
   title?: ReactNode;
 };
 
-export function Modal({
-  className,
-  overlayClassName,
-  bodyOpenClassName,
-  title,
-  children,
-  ...rest
-}: ModalProps) {
+export function Modal({ title, children, ...rest }: ModalProps) {
   return (
     <Root closeTimeoutMS={closeTimeoutMS} appElement={appElement} {...rest}>
       <Header>

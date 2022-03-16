@@ -14,8 +14,8 @@ import { down } from '~/ui/mq';
 import { TextLink } from '~/ui/TextLink';
 import { Typography } from '~/ui/Typography';
 import { sm } from '~/ui/vars/breakpoints';
-import { ReactComponent as DieUnknown } from '~/ui/svg/DieUnknown.svg';
-import { Die } from '~/ui/Die';
+import { ReactComponent as DiceUnknown } from '~/ui/svg/DiceUnknown.svg';
+import { Dice } from '~/ui/Dice';
 import { currency } from '~/app/web3/config';
 import { Skeleton } from '~/ui/Skeleton';
 
@@ -59,7 +59,7 @@ export function GamePlayerItem({
         )}
         {isFinished ? <PayoutText payout={payout} bet={bet} /> : null}
       </ListItemText>
-      {isFinished ? <Die $pips={result as any} /> : <DieUnknown />}
+      {isFinished ? <Dice $pips={result as any} /> : <DiceUnknown />}
     </ListItem>
   );
 }

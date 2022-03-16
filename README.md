@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="docs/die.svg" height="96" />
+    <img src="docs/dice.svg" height="96" />
 </p>
 
 # Dice

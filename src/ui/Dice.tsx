@@ -2,9 +2,9 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import isPropValid from '@emotion/is-prop-valid';
 
-import { ReactComponent as DieSvg } from './svg/Die.svg';
+import { ReactComponent as DiceSvg } from './svg/Dice.svg';
 
-export const Die = styled(DieSvg, {
+export const Dice = styled(DiceSvg, {
   shouldForwardProp: isPropValid,
 })<{
   $pips: 1 | 2 | 3 | 4 | 5 | 6;
