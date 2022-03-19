@@ -88,7 +88,7 @@ export function CreateGameModal(props: CreateGameModalProps) {
         <form onSubmit={formik.handleSubmit}>
           <Fields>
             <BalanceField
-              label={t('Bet Amount')}
+              label={t('Bet amount')}
               error={formik.errors.amount}
               inputProps={{
                 name: 'amount',
